@@ -7,6 +7,10 @@
 // Primary
 
 $strong-cyan: hsl(172, 67%, 45%);
+$weak-cyan: hsl(173, 61%, 77%);
+$red: hsl(13, 51%, 59%);
+
+$another-cyan: #0d686d;
 
 //Neutral
 $very-dark-cyan: hsl(183, 100%, 15%);
@@ -16,6 +20,7 @@ $light-grayish: hsl(185, 41%, 84%);
 $light-grayish2: hsl(189, 41%, 97%);
 
 $radius1: 0.3125rem;
+$mobileWidth: 68rem;
 
 html {
   font-family: "Space Mono", monospace;
@@ -33,7 +38,7 @@ body {
 }
 
 .section {
-  flex-basis: 50%;
+  flex-basis: 100%;
   border-radius: 3 * $radius1;
   display: flex;
   flex-direction: column;
@@ -47,27 +52,70 @@ body {
 .section2 {
   padding: 2.875rem;
   background: $very-dark-cyan;
+  display: flex;
+
+  section {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .header-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-title {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .person {
+    font-size: 0.85rem;
+  }
+
+  .person {
+    font-weight: 700;
+    color: $dark-grayish2;
+  }
+
+  output {
+    color: $strong-cyan;
+    font-weight: 700;
+    font-size: 2.75rem;
+  }
+}
+.credits {
+  display: none;
 }
 
 .title {
   position: absolute;
-  top: 10%;
+  top: 4vw;
   left: 50%;
   transform: translateX(-50%);
+  @media (max-width: $mobileWidth) {
+    top: 3%;
+  }
 }
 
 main {
   display: flex;
   border-radius: 1.6rem;
+  height: 30rem;
 
-  height: 35rem;
   background-color: white;
   padding: 2.5rem 2.25rem;
-  width: 50%;
+  width: 45%;
 
-  @media (max-width: 45rem) {
+  @media (max-width: $mobileWidth) {
     flex-direction: column;
     margin-inline: 2rem;
+    padding: 2% 3%;
+    margin-top: 10rem;
+    width: max(80%, 20rem);
+    height: auto;
   }
 }
 
@@ -78,19 +126,31 @@ main {
 
 .input-field {
   background-color: $light-grayish2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: $radius1;
   display: flex;
-  padding: 0.625rem;
+  padding: 0.4rem 0.625rem;
   margin: 1rem 0;
-  .input {
-    flex-grow: 1;
-  }
+}
+
+.complete {
+  background-color: $strong-cyan;
+  color: $very-dark-cyan;
 }
 
 .input {
   background: transparent;
   border: none;
   text-align: end;
+  height: 100%;
+  cursor: pointer;
+  width: 100%;
+}
+
+.input-field.error {
+  outline: 2px solid $red;
 }
 
 .input::placeholder {
@@ -106,14 +166,31 @@ form {
 .input-div {
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.input-field:focus-within {
+  outline: 2px solid $strong-cyan;
+}
+
+.error-field::before {
+  content: "Can't be zero";
+  color: $red;
+  font-weight: bold;
+  position: absolute;
+  top: 7%;
+  right: 0;
+  display: none;
 }
 
 fieldset {
   border: none;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
+  padding: 0;
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+
     grid-template-rows: 1fr 1fr;
     gap: 0.5rem;
   }
@@ -121,6 +198,7 @@ fieldset {
     grid-column: 1/2;
     // flex: 1 1 33%;
     grid-row: 1/2;
+    height: 2.75rem;
   }
   #percent2 {
     // flex: 1 1 33%;
@@ -145,15 +223,56 @@ fieldset {
 }
 .percent {
   padding: none;
+  font-size: 1.2rem;
+  text-align: center;
   font-weight: 700;
   border: none;
   border-radius: $radius1;
   background: $very-dark-cyan;
   color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: $weak-cyan;
+  color: $very-dark-cyan;
+  cursor: pointer;
+}
+
+.reset {
+  background: $another-cyan;
+  border: none;
+  color: $very-dark-cyan;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: $radius1;
+  margin-top: 2vw;
+  height: 3.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+}
+legend {
+  margin-bottom: 0.75rem;
+}
+
+.input {
+  border: none;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: $very-dark-cyan;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .custom {
   grid-column: 3/4;
+  font-size: 1.2rem;
+  width: 100%;
+  color: $very-dark-cyan;
   grid-row: 2/3;
   font-weight: 700;
   text-align: center;
@@ -162,35 +281,10 @@ fieldset {
   border-radius: $radius1;
 }
 
+.custom:focus {
+  outline: 2px solid $strong-cyan;
+}
+
 .custom::placeholder {
   color: $very-dark-cyan;
-}
-
-.header-title {
-  color: white;
-  font-weight: 700;
-}
-
-.person {
-  font-weight: 700;
-  color: $dark-grayish2;
-}
-
-output {
-  color: $strong-cyan;
-  font-weight: 700;
-}
-
-.reset {
-  background: hsl(183, 100%, 21%);
-  border: none;
-  color: $very-dark-cyan;
-  font-weight: bold;
-  border-radius: $radius1;
-}
-
-.credits {
-  display: none;
-}
-@media (min-width: 50rem) {
 }

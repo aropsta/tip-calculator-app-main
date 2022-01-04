@@ -201,7 +201,7 @@ body {
 }
 
 .section {
-  flex-basis: 50%;
+  flex-basis: 100%;
   border-radius: 0.9375rem;
   display: flex;
   flex-direction: column;
@@ -215,27 +215,68 @@ body {
 .section2 {
   padding: 2.875rem;
   background: #00494d;
+  display: flex;
+}
+.section2 section {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.section2 .header-section {
+  display: flex;
+  flex-direction: column;
+}
+.section2 .header-title {
+  color: white;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.section2 .person {
+  font-size: 0.85rem;
+}
+.section2 .person {
+  font-weight: 700;
+  color: #7f9c9f;
+}
+.section2 output {
+  color: #26c0ab;
+  font-weight: 700;
+  font-size: 2.75rem;
+}
+
+.credits {
+  display: none;
 }
 
 .title {
   position: absolute;
-  top: 10%;
+  top: 4vw;
   left: 50%;
   transform: translateX(-50%);
+}
+@media (max-width: 68rem) {
+  .title {
+    top: 3%;
+  }
 }
 
 main {
   display: flex;
   border-radius: 1.6rem;
-  height: 35rem;
+  height: 30rem;
   background-color: white;
   padding: 2.5rem 2.25rem;
-  width: 50%;
+  width: 45%;
 }
-@media (max-width: 45rem) {
+@media (max-width: 68rem) {
   main {
     flex-direction: column;
     margin-inline: 2rem;
+    padding: 2% 3%;
+    margin-top: 10rem;
+    width: max(80%, 20rem);
+    height: auto;
   }
 }
 
@@ -246,19 +287,31 @@ main {
 
 .input-field {
   background-color: #f4fafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 0.3125rem;
   display: flex;
-  padding: 0.625rem;
+  padding: 0.4rem 0.625rem;
   margin: 1rem 0;
 }
-.input-field .input {
-  flex-grow: 1;
+
+.complete {
+  background-color: #26c0ab;
+  color: #00494d;
 }
 
 .input {
   background: transparent;
   border: none;
   text-align: end;
+  height: 100%;
+  cursor: pointer;
+  width: 100%;
+}
+
+.input-field.error {
+  outline: 2px solid #cc7861;
 }
 
 .input::placeholder {
@@ -274,11 +327,27 @@ form {
 .input-div {
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.input-field:focus-within {
+  outline: 2px solid #26c0ab;
+}
+
+.error-field::before {
+  content: "Can't be zero";
+  color: #cc7861;
+  font-weight: bold;
+  position: absolute;
+  top: 7%;
+  right: 0;
+  display: none;
 }
 
 fieldset {
   border: none;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
+  padding: 0;
 }
 fieldset .grid {
   display: grid;
@@ -289,6 +358,7 @@ fieldset .grid {
 fieldset #percent1 {
   grid-column: 1/2;
   grid-row: 1/2;
+  height: 2.75rem;
 }
 fieldset #percent2 {
   grid-column: 2/3;
@@ -309,15 +379,57 @@ fieldset #percent5 {
 
 .percent {
   padding: none;
+  font-size: 1.2rem;
+  text-align: center;
   font-weight: 700;
   border: none;
   border-radius: 0.3125rem;
   background: #00494d;
   color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a1e8e0;
+  color: #00494d;
+  cursor: pointer;
+}
+
+.reset {
+  background: #0d686d;
+  border: none;
+  color: #00494d;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 0.3125rem;
+  margin-top: 2vw;
+  height: 3.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+}
+
+legend {
+  margin-bottom: 0.75rem;
+}
+
+.input {
+  border: none;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #00494d;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .custom {
   grid-column: 3/4;
+  font-size: 1.2rem;
+  width: 100%;
+  color: #00494d;
   grid-row: 2/3;
   font-weight: 700;
   text-align: center;
@@ -326,35 +438,12 @@ fieldset #percent5 {
   border-radius: 0.3125rem;
 }
 
+.custom:focus {
+  outline: 2px solid #26c0ab;
+}
+
 .custom::placeholder {
   color: #00494d;
-}
-
-.header-title {
-  color: white;
-  font-weight: 700;
-}
-
-.person {
-  font-weight: 700;
-  color: #7f9c9f;
-}
-
-output {
-  color: #26c0ab;
-  font-weight: 700;
-}
-
-.reset {
-  background: #00666b;
-  border: none;
-  color: #00494d;
-  font-weight: bold;
-  border-radius: 0.3125rem;
-}
-
-.credits {
-  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
