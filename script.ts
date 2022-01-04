@@ -1,51 +1,45 @@
-const form = document.getElementById("form");
+class FormInformation {
+  form: HTMLFormElement;
+  inputBill: HTMLInputElement;
+  inputPeople: HTMLInputElement;
 
-let validate = (e: Object) => {
-  console.log(e);
-};
+  tip: HTMLOutputElement;
+  total: HTMLOutputElement;
+  reset: HTMLButtonElement;
 
-const buttonClick = (e: Object) => {
-  console.log("Button Clicked!");
-};
-const inputBill: HTMLInputElement = <HTMLInputElement>(
-  document.getElementById("bill")
-);
-const inputPeople = document.getElementById("npeople");
+  buttonsArray: (HTMLInputElement | HTMLButtonElement)[];
 
-const tip = document.getElementById("tipAmount");
-const total = document.getElementById("total");
+  constructor() {
+    this.form = document.getElementById("form") as HTMLFormElement;
+    this.inputBill = document.getElementById("bill") as HTMLInputElement;
+    this.inputPeople = document.getElementById("npeople") as HTMLInputElement;
 
-const reset = document.querySelector(".reset");
+    this.tip = document.getElementById("tipAmount") as HTMLOutputElement;
+    this.total = document.getElementById("total") as HTMLOutputElement;
+    this.reset = document.querySelector(".reset") as HTMLButtonElement;
 
-form?.addEventListener("submit", validate);
+    this.buttonsArray = [
+      document.getElementById("percent1") as HTMLButtonElement,
+      document.getElementById("percent2") as HTMLButtonElement,
+      document.getElementById("percent3") as HTMLButtonElement,
+      document.getElementById("percent4") as HTMLButtonElement,
+      document.getElementById("percent5") as HTMLButtonElement,
+      document.getElementById("percent6") as HTMLInputElement,
+    ];
 
-const doStuff = (): void => {};
-
-const addEvent = (obj: (HTMLInputElement | HTMLButtonElement)[]) => {
-  let button: HTMLButtonElement | HTMLInputElement;
-
-  for (button of obj) {
-    button.addEventListener("onclick", buttonClick);
+    this.initializeListeners();
   }
-};
 
-interface buttonObj {
-  fivePercent: HTMLButtonElement;
-  tenPercent: HTMLButtonElement;
-  fifteenPercent: HTMLButtonElement;
-  twentyFivePercent: HTMLButtonElement;
-  fiftyPercent: HTMLButtonElement;
-  custom: HTMLInputElement;
+  private initializeListeners() {
+    this.form.addEventListener("submit", this.clickFunc);
+  }
+
+  private clickFunc(e: Event) {
+    e.preventDefault();
+
+    //undefined
+    console.log(this.buttonsArray[5].value);
+  }
 }
 
-const buttonPercentages = [
-  <HTMLButtonElement>document.getElementById("percent1"),
-  <HTMLButtonElement>document.getElementById("percent2"),
-  <HTMLButtonElement>document.getElementById("percent3"),
-  <HTMLButtonElement>document.getElementById("percent4"),
-  <HTMLButtonElement>document.getElementById("percent5"),
-  <HTMLInputElement>document.getElementById("percent6"),
-];
-
-addEvent(buttonPercentages);
-buttonClick;
+const form = new FormInformation();
