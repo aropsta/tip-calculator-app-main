@@ -17,13 +17,13 @@ class FormInformation {
         ];
         this.initializeListeners();
     }
-    //asd
     initializeListeners() {
         this.form.addEventListener("submit", this.submit);
         this.inputBill.addEventListener("change", this.onChange);
         this.inputPeople.addEventListener("input", this.onChange);
         this.buttonsArray[5].addEventListener("input", this.onChange);
     }
+    //ignore
     onChange(e) {
         console.log("Jello" + e);
     }
