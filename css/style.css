@@ -319,6 +319,10 @@ main {
   font-weight: 700;
 }
 
+.sr-only {
+  display: none;
+}
+
 form {
   width: 100%;
   height: 100%;
@@ -444,7 +448,6 @@ legend {
 
 .custom::placeholder {
   color: #00494d;
-  /**/
 }
 
 /*# sourceMappingURL=style.css.map */
