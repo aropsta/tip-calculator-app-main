@@ -266,7 +266,7 @@ main {
   border-radius: 1.6rem;
   height: 30rem;
   background-color: white;
-  padding: 2.5rem 2.25rem;
+  padding: 2rem 1.75rem;
   width: 45%;
 }
 @media (max-width: 68rem) {
@@ -278,6 +278,10 @@ main {
     width: max(80%, 20rem);
     height: auto;
   }
+}
+
+h2 {
+  font-size: 1.1rem;
 }
 
 .text {

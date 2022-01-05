@@ -3,11 +3,11 @@ class FormInformation {
   private inputBill: HTMLInputElement;
   private inputPeople: HTMLInputElement;
 
-  tip: HTMLOutputElement;
-  total: HTMLOutputElement;
-  reset: HTMLButtonElement;
+  private tip: HTMLOutputElement;
+  private total: HTMLOutputElement;
+  private reset: HTMLButtonElement;
 
-  buttonsArray: (HTMLInputElement | HTMLButtonElement)[];
+  private buttonsArray: (HTMLInputElement | HTMLButtonElement)[];
 
   constructor() {
     this.form = document.getElementById("form") as HTMLFormElement;
@@ -29,16 +29,52 @@ class FormInformation {
 
     this.initializeListeners();
   }
-
+  //asd
   private initializeListeners() {
-    this.form.addEventListener("submit", this.clickFunc);
+    this.form.addEventListener("submit", this.submit);
+    this.inputBill.addEventListener("change", this.onChange);
+    this.inputPeople.addEventListener("input", this.onChange);
+    this.buttonsArray[5].addEventListener("input", this.onChange);
   }
 
-  clickFunc(e: Event) {
-    e.preventDefault();
+  onChange(e: Event) {
+    console.log("Jello" + e);
+  }
 
-    //undefined
-    console.log(form);
+  submit(q: Event) {
+    let e = q as SubmitEvent;
+    let b = q as InputEvent;
+    e.preventDefault();
+    let percentage: number | string;
+
+    switch (e.submitter?.id) {
+      case "percent1": {
+        percentage = 0.05;
+        break;
+      }
+      case "percent2": {
+        percentage = 0.1;
+        break;
+      }
+      case "percent3": {
+        percentage = 0.15;
+        break;
+      }
+      case "percent4": {
+        percentage = 0.25;
+        break;
+      }
+      case "percent5": {
+        percentage = 0.5;
+        break;
+      }
+      default: {
+        let custom = e.submitter as HTMLInputElement;
+        percentage = custom.value;
+        break;
+      }
+    }
+    console.log(percentage);
   }
 }
 
