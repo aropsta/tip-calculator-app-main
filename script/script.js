@@ -23,7 +23,7 @@ class FormInformation {
     clickFunc(e) {
         e.preventDefault();
         //undefined
-        console.log(this.buttonsArray[5].value);
+        console.log(form);
     }
 }
 const form = new FormInformation();

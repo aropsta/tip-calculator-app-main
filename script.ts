@@ -1,7 +1,7 @@
 class FormInformation {
-  form: HTMLFormElement;
-  inputBill: HTMLInputElement;
-  inputPeople: HTMLInputElement;
+  private form: HTMLFormElement;
+  private inputBill: HTMLInputElement;
+  private inputPeople: HTMLInputElement;
 
   tip: HTMLOutputElement;
   total: HTMLOutputElement;
@@ -34,11 +34,11 @@ class FormInformation {
     this.form.addEventListener("submit", this.clickFunc);
   }
 
-  private clickFunc(e: Event) {
+  clickFunc(e: Event) {
     e.preventDefault();
 
     //undefined
-    console.log(this.buttonsArray[5].value);
+    console.log(form);
   }
 }
 
