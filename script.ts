@@ -29,7 +29,7 @@ class FormInformation {
 
     this.initializeListeners();
   }
-  //asd
+
   private initializeListeners() {
     this.form.addEventListener("submit", this.submit);
     this.inputBill.addEventListener("change", this.onChange);
@@ -37,6 +37,7 @@ class FormInformation {
     this.buttonsArray[5].addEventListener("input", this.onChange);
   }
 
+  //ignore
   onChange(e: Event) {
     console.log("Jello" + e);
   }
