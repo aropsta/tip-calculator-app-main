@@ -7,6 +7,8 @@ class FormInformation {
   private total: HTMLOutputElement;
   private reset: HTMLButtonElement;
 
+  private percentage: number | string = 0;
+
   private buttonsArray: (HTMLInputElement | HTMLButtonElement)[];
 
   constructor() {
@@ -32,51 +34,37 @@ class FormInformation {
 
   private initializeListeners() {
     this.form.addEventListener("submit", this.submit);
-    this.inputBill.addEventListener("change", this.onChange);
+    this.inputBill.addEventListener("change", this.onEnterInput);
     this.inputPeople.addEventListener("input", this.onChange);
-    this.buttonsArray[5].addEventListener("input", this.onChange);
+
+    for (let i = 0; i < this.buttonsArray.length - 1; i++) {
+      this.buttonsArray[i].addEventListener("click", this.onClick);
+    }
+  }
+
+  onClick(e: Event) {
+    let button = e.target as HTMLButtonElement;
+
+    this.percentage = Number(button.dataset.percent);
+    console.log(this.percentage);
   }
 
   //ignore
-  onChange(e: Event) {
-    console.log("Jello" + e);
-  }
 
-  submit(q: Event) {
-    let e = q as SubmitEvent;
-    let b = q as InputEvent;
+  onEnterInput(e: Event) {
     e.preventDefault();
-    let percentage: number | string;
+    let men = e.target as HTMLInputElement;
 
-    switch (e.submitter?.id) {
-      case "percent1": {
-        percentage = 0.05;
-        break;
-      }
-      case "percent2": {
-        percentage = 0.1;
-        break;
-      }
-      case "percent3": {
-        percentage = 0.15;
-        break;
-      }
-      case "percent4": {
-        percentage = 0.25;
-        break;
-      }
-      case "percent5": {
-        percentage = 0.5;
-        break;
-      }
-      default: {
-        let custom = e.submitter as HTMLInputElement;
-        percentage = custom.value;
-        break;
-      }
-    }
-    console.log(percentage);
+    console.log(Number(men.value));
   }
+  onChange(e: Event) {
+    e.preventDefault();
+    let q = e as InputEvent;
+    let men = e.target as HTMLInputElement;
+    console.log(men.value);
+  }
+
+  submit(q: Event) {}
 }
 
 const form = new FormInformation();
