@@ -9,7 +9,7 @@ class FormInformation {
 
   private percentage: number | string = 0;
 
-  private buttonsArray: (HTMLInputElement | HTMLButtonElement)[];
+  public buttonsArray: (HTMLInputElement | HTMLButtonElement)[];
 
   constructor() {
     this.form = document.getElementById("form") as HTMLFormElement;
@@ -42,11 +42,16 @@ class FormInformation {
     }
   }
 
-  onClick(e: Event) {
+  public onClick(e: Event) {
     let button = e.target as HTMLButtonElement;
 
+    button.classList.toggle("complete");
     this.percentage = Number(button.dataset.percent);
-    console.log(this.percentage);
+
+    for (let i = 0; i < this.buttonsArray.length; i++) {
+      console.log("BUTTON: " + i + " " + this.buttonsArray[i].disabled);
+      this.buttonsArray[i].disabled = true;
+    }
   }
 
   //ignore

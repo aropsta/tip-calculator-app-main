@@ -15,7 +15,7 @@ $another-cyan: #0d686d;
 //Neutral
 $very-dark-cyan: hsl(183, 100%, 15%);
 $dark-grayish: hsl(186, 14%, 43%);
-$dark-grayish2: hsl(184, 14%, 56%);
+$dark-grayish2: #91b3b6;
 $light-grayish: hsl(185, 41%, 84%);
 $light-grayish2: hsl(189, 41%, 97%);
 
@@ -77,7 +77,6 @@ body {
 
   .person {
     font-weight: 700;
-    color: $dark-grayish2;
   }
 
   output {
@@ -137,11 +136,6 @@ h2 {
   display: flex;
   padding: 0.4rem 0.625rem;
   margin: 1rem 0;
-}
-
-.complete {
-  background-color: $strong-cyan;
-  color: $very-dark-cyan;
 }
 
 .input {
@@ -239,6 +233,11 @@ fieldset {
   background: $very-dark-cyan;
   color: white;
   cursor: pointer;
+}
+
+.complete {
+  background-color: $strong-cyan;
+  color: $very-dark-cyan;
 }
 
 button:hover {

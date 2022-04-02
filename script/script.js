@@ -28,8 +28,12 @@ class FormInformation {
     }
     onClick(e) {
         let button = e.target;
+        button.classList.toggle("complete");
         this.percentage = Number(button.dataset.percent);
-        console.log(this.percentage);
+        for (let i = 0; i < this.buttonsArray.length; i++) {
+            console.log("BUTTON: " + i + " " + this.buttonsArray[i].disabled);
+            this.buttonsArray[i].disabled = true;
+        }
     }
     //ignore
     onEnterInput(e) {
